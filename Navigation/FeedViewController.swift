@@ -21,8 +21,8 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-                view.backgroundColor = .systemGray2
-                title = "Feed"
+        view.backgroundColor = .systemGray2
+        title = "Feed"
 
         view.addSubview(postButton)
 
