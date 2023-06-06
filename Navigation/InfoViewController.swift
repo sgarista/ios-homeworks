@@ -23,6 +23,12 @@ class InfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupInfoButton()
+        setupAlertButton()
+
+        infoButton.addTarget(self, action: #selector(showInfoViewController(_:)), for: .touchUpInside)
+        alertButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
+
 
         if let glass = UIImage(named: "Glass") {
             view.backgroundColor = UIColor(patternImage: glass)
@@ -30,20 +36,26 @@ class InfoViewController: UIViewController {
             view.backgroundColor = .systemBlue
         }
 
-        view.addSubview(alertButton)
-        view.addSubview(infoButton)
+
 
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([infoButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.0), infoButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 240.0), infoButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: -320.0), infoButton.heightAnchor.constraint(equalToConstant: 44.0)])
 
-
-
-
-        infoButton.addTarget(self, action: #selector(showInfoViewController(_:)), for: .touchUpInside)
-        alertButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-
     }
 
+
+    func setupInfoButton() {
+
+        view.addSubview(infoButton)
+    }
+
+
+    func setupAlertButton() {
+
+        view.addSubview(alertButton)
+    }
+
+    
     @objc func showInfoViewController(_ sender: UIButton) {
         dismiss(animated: true)
 
@@ -61,5 +73,4 @@ class InfoViewController: UIViewController {
 
         present(alert, animated: true, completion: nil)
     }
-
 }
