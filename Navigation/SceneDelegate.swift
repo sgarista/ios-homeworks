@@ -20,17 +20,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         UINavigationBar.appearance().backgroundColor = .white
         UITabBar.appearance().backgroundColor = .white
 
-        feedNavigationController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "list.bullet.below.rectangle"), tag: 0)
+        feedNavigationController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "list.bullet.below.rectangle"), tag: 0)
 
 
-        profileNavigationController.tabBarItem = UITabBarItem(title: "", image: UIImage(systemName: "person.crop.circle"), tag: 1)
+        profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
 
 
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
 
         tabBarController.selectedIndex = 0
 
-        let rootViewController = UIViewController()
+        let rootViewController = ViewController()
         rootViewController.view.backgroundColor = .white
         rootViewController.addChild(tabBarController)
         rootViewController.view.addSubview(tabBarController.view)

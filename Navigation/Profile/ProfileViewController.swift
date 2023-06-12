@@ -14,7 +14,11 @@ class ProfileViewController: UIViewController {
 
         profileHeaderView = ProfileHeaderView()
 
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        
         view.addSubview(profileHeaderView)
+
+        setupConstraints()
 
     }
 
@@ -23,11 +27,20 @@ class ProfileViewController: UIViewController {
         profileHeaderView.frame = view.frame
     }
 
+    func setupConstraints() {
 
-//    override var preferredStatusBarStyle: UIStatusBarStyle {
-//
-//        return .lightContent
-//    }
+        let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+
+        NSLayoutConstraint.activate([
+            profileHeaderView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            profileHeaderView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            profileHeaderView.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            profileHeaderView.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor)
 
 
+
+        ])
+    }
 }
