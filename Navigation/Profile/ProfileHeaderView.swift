@@ -9,7 +9,7 @@ class ProfileHeaderView: UIView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
 
         imageView.sizeToFit()
-        imageView.layer.cornerRadius = imageView.frame.size.width / 2
+        imageView.layer.cornerRadius = 50
         imageView.layer.masksToBounds = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -33,16 +33,18 @@ class ProfileHeaderView: UIView {
     }()
 
 
-    var status: UILabel = {
-        var status = UILabel()
+    var userStatus: UILabel = {
+        var userStatus = UILabel()
 
-        status.translatesAutoresizingMaskIntoConstraints = false
+        userStatus.translatesAutoresizingMaskIntoConstraints = false
 
-        status.text = "Waiting for something..."
-        status.font = UIFont.systemFont(ofSize: 14, weight: .regular)
-        status.textColor = .gray
+        userStatus.text = "Waiting for something..."
+        userStatus.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        userStatus.textColor = .gray
+        userStatus.lineBreakMode = .byWordWrapping
+        userStatus.numberOfLines = 0
 
-        return status
+        return userStatus
     }()
 
     var newStatus: UITextField = {
@@ -50,13 +52,16 @@ class ProfileHeaderView: UIView {
 
         newStatus.translatesAutoresizingMaskIntoConstraints = false
 
-        newStatus.text = "  Listening to music"
+        newStatus.text = ""
+        newStatus.placeholder = "Listening to music"
         newStatus.backgroundColor = .white
         newStatus.layer.cornerRadius = 12
         newStatus.layer.borderWidth = 1
         newStatus.layer.borderColor = UIColor.black.cgColor
         newStatus.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         newStatus.textColor = .black
+        newStatus.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: newStatus.frame.height))
+        newStatus.leftViewMode = .always
 
         return newStatus
     }()
@@ -67,7 +72,7 @@ class ProfileHeaderView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
 
         button.setTitle("Set status", for: .normal)
-        button.layer.cornerRadius = 4.0
+        button.layer.cornerRadius = 12
         button.backgroundColor = .blue
         button.setTitleColor(.white, for: .normal)
         button.layer.shadowOffset = CGSize(width: 4.0, height: 4.0)
@@ -87,7 +92,7 @@ class ProfileHeaderView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        layoutSubviews()
+        setupLayout()
 
         statusButton.addTarget(UIEvent(), action: #selector(buttonPressed(_:)), for: .touchUpInside)
         newStatus.addTarget(UIEvent(), action: #selector(statusTextChanged(_:)), for: .editingChanged)
@@ -100,41 +105,37 @@ class ProfileHeaderView: UIView {
     }
 
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    func setupLayout() {
 
 
         addSubview(userPic)
         addSubview(userName)
-        addSubview(status)
+        addSubview(userStatus)
         addSubview(newStatus)
         addSubview(statusButton)
 
 
-
-
         NSLayoutConstraint.activate([
-            userPic.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            userPic.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             userPic.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
-
+            userPic.heightAnchor.constraint(equalToConstant: 100),
+            userPic.widthAnchor.constraint(equalToConstant: 100),
 
             userName.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-            userName.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            userName.leadingAnchor.constraint(equalTo: userPic.trailingAnchor, constant: 30),
 
+            userStatus.topAnchor.constraint(equalTo: userName.bottomAnchor, constant: 60),
+            userStatus.leadingAnchor.constraint(equalTo: userPic.trailingAnchor, constant: 30),
+            userStatus.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
 
-            status.bottomAnchor.constraint(equalTo: statusButton.topAnchor, constant: -74),
-            status.leadingAnchor.constraint(equalTo: userName.leadingAnchor),
-
-
-            newStatus.topAnchor.constraint(equalTo: status.bottomAnchor, constant: 20),
-            newStatus.leadingAnchor.constraint(equalTo: status.leadingAnchor),
-            newStatus.trailingAnchor.constraint(equalTo: statusButton.trailingAnchor),
+            newStatus.topAnchor.constraint(equalTo: userStatus.bottomAnchor, constant: 17),
+            newStatus.leadingAnchor.constraint(equalTo: userPic.trailingAnchor, constant: 30),
+            newStatus.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             newStatus.heightAnchor.constraint(equalToConstant: 40),
 
-
             statusButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            statusButton.topAnchor.constraint(equalTo: userPic.bottomAnchor, constant: 56),
-            statusButton.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor),
+            statusButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            statusButton.topAnchor.constraint(equalTo: newStatus.bottomAnchor, constant: 16),
             statusButton.heightAnchor.constraint(equalToConstant: 50),
 
         ])
@@ -151,13 +152,16 @@ class ProfileHeaderView: UIView {
 
     @objc func buttonPressed(_ sender: UIButton) {
 
-        let tempStatus = status.text
-
         if let newStatusText = statusText {
-            status.text = newStatusText
+            if newStatusText.count > 0 {
+                userStatus.text = newStatusText
+            } else {
+                userStatus.text = newStatus.placeholder ?? "ubiquitous emptiness"
+            }
         } else {
-            status.text = tempStatus
-
+            userStatus.text = newStatus.placeholder ?? "ubiquitous emptiness"
         }
     }
 }
+
+
