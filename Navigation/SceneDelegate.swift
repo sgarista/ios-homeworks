@@ -12,7 +12,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
-        let profileNavigationController = UINavigationController(rootViewController: ProfileViewController())
+        let profileNavigationController = UINavigationController(rootViewController: LogInViewController())
 
 
         let tabBarController = UITabBarController()
@@ -42,7 +42,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             tabBarController.view.trailingAnchor.constraint(equalTo: rootViewController.view.trailingAnchor),
             tabBarController.view.bottomAnchor.constraint(equalTo: rootViewController.view.bottomAnchor)
         ])
-
 
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()

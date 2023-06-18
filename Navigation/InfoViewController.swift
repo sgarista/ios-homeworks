@@ -13,6 +13,8 @@ class InfoViewController: UIViewController {
 
     private lazy var alertButton: UIButton = {
         let button = UIButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("НАЖМИ!", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.frame = CGRect(x: 160, y: 250, width: 100, height: 50)

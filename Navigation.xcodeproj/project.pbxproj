@@ -17,6 +17,7 @@
 		3A3C5AFB2A2CD1800072E910 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5AFA2A2CD1800072E910 /* FeedViewController.swift */; };
 		3A3C5AFD2A2CD19F0072E910 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5AFC2A2CD19F0072E910 /* ProfileViewController.swift */; };
 		3A3C5AFF2A2CDD400072E910 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5AFE2A2CDD400072E910 /* PostViewController.swift */; };
+		3A9FBCEC2A3CC257002EEA34 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3A3C5AFA2A2CD1800072E910 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		3A3C5AFC2A2CD19F0072E910 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A3C5AFE2A2CDD400072E910 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +52,7 @@
 			children = (
 				3A0856712A34ED0C0022E5D8 /* ProfileHeaderView.swift */,
 				3A3C5AFC2A2CD19F0072E910 /* ProfileViewController.swift */,
+				3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 			files = (
 				3A3C5AFF2A2CDD400072E910 /* PostViewController.swift in Sources */,
 				3A3C5AEB2A2CA0140072E910 /* ViewController.swift in Sources */,
+				3A9FBCEC2A3CC257002EEA34 /* LogInViewController.swift in Sources */,
 				3A3C5AE72A2CA0140072E910 /* AppDelegate.swift in Sources */,
 				3A23AC632A2DE830006F7F28 /* InfoViewController.swift in Sources */,
 				3A3C5AFD2A2CD19F0072E910 /* ProfileViewController.swift in Sources */,
