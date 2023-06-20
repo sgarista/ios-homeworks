@@ -1,9 +1,5 @@
 import UIKit
 
-struct Post {
-
-    var title: String
-}
 
 
 class FeedViewController: UIViewController {
@@ -91,21 +87,13 @@ class FeedViewController: UIViewController {
 
 
     @objc func redButtonPressed(_ sender: UIButton) {
-        let currentPost = Post(title: "Манчестер Юнайтед")
-        let postVC = PostViewController()
-        postVC.post = currentPost
-        postVC.view.backgroundColor = .systemRed
 
-        navigationController?.pushViewController(postVC, animated: true)
+        navigationController?.pushViewController(InfoViewController(), animated: true)
     }
 
 
     @objc func blueButtonPressed(_ sender: UIButton) {
-        let currentPost = Post(title: "Манчестер Сити")
-        let postVC = PostViewController()
-        postVC.post = currentPost
-        postVC.view.backgroundColor = .systemBlue
 
-        navigationController?.pushViewController(postVC, animated: true)
+        navigationController?.pushViewController(PostViewController(), animated: true)
     }
 }

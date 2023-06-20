@@ -18,6 +18,7 @@
 		3A3C5AFD2A2CD19F0072E910 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5AFC2A2CD19F0072E910 /* ProfileViewController.swift */; };
 		3A3C5AFF2A2CDD400072E910 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5AFE2A2CDD400072E910 /* PostViewController.swift */; };
 		3A9FBCEC2A3CC257002EEA34 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */; };
+		3AA60E992A40C57B00560494 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA60E982A40C57B00560494 /* Post.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		3A3C5AFC2A2CD19F0072E910 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A3C5AFE2A2CDD400072E910 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		3AA60E982A40C57B00560494 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				3A3C5AFA2A2CD1800072E910 /* FeedViewController.swift */,
 				3A3C5AFE2A2CDD400072E910 /* PostViewController.swift */,
 				3A23AC622A2DE830006F7F28 /* InfoViewController.swift */,
+				3AA60E982A40C57B00560494 /* Post.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				3A3C5AFB2A2CD1800072E910 /* FeedViewController.swift in Sources */,
 				3A3C5AE92A2CA0140072E910 /* SceneDelegate.swift in Sources */,
 				3A0856722A34ED0C0022E5D8 /* ProfileHeaderView.swift in Sources */,
+				3AA60E992A40C57B00560494 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -3,7 +3,8 @@ import UIKit
 
 class PostViewController: UIViewController {
 
-    var post: Post?
+    var post = [Post]()
+
 
     private lazy var postButton: UIButton = {
         let button = UIButton()
@@ -35,11 +36,6 @@ class PostViewController: UIViewController {
 
     func setupPostButtonView() {
 
-        if let post = post {
-            title = post.title
-        } else {
-            title = "Без заголовка"
-        }
 
         view.backgroundColor = .gray
         view.addSubview(postButton)
