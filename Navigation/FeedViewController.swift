@@ -8,30 +8,70 @@ struct Post {
 
 class FeedViewController: UIViewController {
 
-    private lazy var postButton: UIButton = {
+    var redButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Читать", for: .normal)
-        button.setTitleColor(.black, for: .normal)
+
+        button.setTitle("RED", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+
+        button.layer.borderWidth = 4
+        button.layer.borderColor = UIColor.red.cgColor
+        button.backgroundColor = .white
 
         return button
+    }()
+
+
+
+
+    var blueButton: UIButton = {
+        let button = UIButton()
+
+        button.setTitle("BLUE", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+
+        button.layer.borderWidth = 4
+        button.layer.borderColor = UIColor.blue.cgColor
+        button.backgroundColor = .white
+
+        return button
+    }()
+
+
+    var stackView: UIStackView = {
+        var stackView = UIStackView()
+
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.clipsToBounds = true
+
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 10
+
+        return stackView
     }()
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupPostButtonView()
+        setupStackView()
+
+        stackView.addArrangedSubview(redButton)
+        stackView.addArrangedSubview(blueButton)
+
         activateConstraints()
 
-        postButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
-
+        redButton.addTarget(self, action: #selector(redButtonPressed(_:)), for: .touchUpInside)
+        blueButton.addTarget(self, action: #selector(blueButtonPressed(_:)), for: .touchUpInside)
     }
 
-    func setupPostButtonView() {
 
-        view.addSubview(postButton)
+    func setupStackView() {
 
+        view.addSubview(stackView)
         view.backgroundColor = .systemGray2
         title = "Feed"
     }
@@ -39,19 +79,33 @@ class FeedViewController: UIViewController {
 
     func activateConstraints() {
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
+
         NSLayoutConstraint.activate([
-            postButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.0),
-            postButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 240.0),
-            postButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: -280.0), postButton.heightAnchor.constraint(equalToConstant: 44.0)])
+            stackView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 50.0),
+            stackView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -50.0),
+            stackView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 100.0),
+            stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -100.0)
+        ])
 
     }
 
 
-    @objc func buttonPressed(_ sender: UIButton) {
-        let currentPost = Post(title: "Тестовый заголовок")
+    @objc func redButtonPressed(_ sender: UIButton) {
+        let currentPost = Post(title: "Манчестер Юнайтед")
         let postVC = PostViewController()
         postVC.post = currentPost
-        navigationController?.pushViewController(postVC, animated: true)
+        postVC.view.backgroundColor = .systemRed
 
+        navigationController?.pushViewController(postVC, animated: true)
+    }
+
+
+    @objc func blueButtonPressed(_ sender: UIButton) {
+        let currentPost = Post(title: "Манчестер Сити")
+        let postVC = PostViewController()
+        postVC.post = currentPost
+        postVC.view.backgroundColor = .systemBlue
+
+        navigationController?.pushViewController(postVC, animated: true)
     }
 }
