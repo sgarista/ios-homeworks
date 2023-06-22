@@ -43,10 +43,6 @@ class LogInViewController: UIViewController {
         login.tintColor = .lightGray
         login.autocapitalizationType = .none
         login.placeholder = "Email or phone"
-        login.layer.borderColor = UIColor.lightGray.cgColor
-        login.layer.borderWidth = 0.5
-        login.layer.cornerRadius = 10
-        login.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         login.backgroundColor = .systemGray6
         login.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: login.frame.height))
         login.leftViewMode = .always
@@ -55,6 +51,8 @@ class LogInViewController: UIViewController {
         login.returnKeyType = .done
         login.clearButtonMode = .whileEditing
         login.contentVerticalAlignment = .center
+        login.layer.borderColor = UIColor.lightGray.cgColor
+        login.layer.borderWidth = 0.5
 
         login.delegate = self
 
@@ -71,10 +69,6 @@ class LogInViewController: UIViewController {
         password.autocapitalizationType = .none
         password.isSecureTextEntry = true
         password.placeholder = "Password"
-        password.layer.borderColor = UIColor.lightGray.cgColor
-        password.layer.borderWidth = 0.5
-        password.layer.cornerRadius = 10
-        password.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         password.backgroundColor = .systemGray6
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: password.frame.height))
         password.leftViewMode = .always
@@ -82,6 +76,8 @@ class LogInViewController: UIViewController {
         password.returnKeyType = .done
         password.clearButtonMode = .whileEditing
         password.contentVerticalAlignment = .center
+        password.layer.borderColor = UIColor.lightGray.cgColor
+        password.layer.borderWidth = 0.5
 
         password.delegate = self
 
@@ -98,6 +94,7 @@ class LogInViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
         stackView.spacing = -1
+        stackView.layer.cornerRadius = 10
 
         return stackView
     }()
