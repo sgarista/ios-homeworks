@@ -10,7 +10,6 @@ class ProfileHeaderView: UIView {
 
         avatarImageView.sizeToFit()
         avatarImageView.layer.cornerRadius = 50
-        avatarImageView.layer.masksToBounds = false
         avatarImageView.contentMode = .scaleAspectFill
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.borderWidth = 3
@@ -79,7 +78,6 @@ class ProfileHeaderView: UIView {
         button.layer.shadowRadius = 4.0
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
-        button.layer.masksToBounds = true
         button.clipsToBounds = false
 
         return button

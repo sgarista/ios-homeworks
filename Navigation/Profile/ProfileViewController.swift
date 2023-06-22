@@ -51,7 +51,6 @@ class ProfileViewController: UIViewController {
             profileHeaderView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             profileHeaderView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
 
-
             makeStatusBiggerButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
             makeStatusBiggerButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
             makeStatusBiggerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
