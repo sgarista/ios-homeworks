@@ -5,6 +5,7 @@ class PostTableViewCell: UITableViewCell {
     
     static let  id = "PostTableViewCell"
     
+    
     private let authorLabel: UILabel = {
         let authorLabel = UILabel()
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -15,6 +16,7 @@ class PostTableViewCell: UITableViewCell {
         
         return authorLabel
     }()
+    
     
     private let postImageView: UIImageView = {
         var postImageView = UIImageView()
@@ -27,6 +29,7 @@ class PostTableViewCell: UITableViewCell {
         return postImageView
     }()
     
+    
     private let descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -38,6 +41,7 @@ class PostTableViewCell: UITableViewCell {
         return descriptionLabel
     }()
     
+    
     private let likesLabel: UILabel = {
         let likesLabel = UILabel()
         likesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -47,6 +51,7 @@ class PostTableViewCell: UITableViewCell {
         
         return likesLabel
     }()
+    
     
     private let viewsLabel: UILabel = {
         let viewsLabel = UILabel()
@@ -72,11 +77,15 @@ class PostTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        setupSubviews()
         setupUI()
         
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -92,7 +101,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     
-    private func setupUI() {
+    private func setupSubviews() {
         
         addSubview(stackView)
         stackView.addArrangedSubview(authorLabel)
@@ -100,6 +109,13 @@ class PostTableViewCell: UITableViewCell {
         addSubview(descriptionLabel)
         addSubview(likesLabel)
         addSubview(viewsLabel)
+    }
+    
+    
+    
+    private func setupUI() {
+        
+        
         
         NSLayoutConstraint.activate([
             authorLabel.topAnchor.constraint(equalTo: topAnchor),
@@ -109,7 +125,6 @@ class PostTableViewCell: UITableViewCell {
             
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            
             
             descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),

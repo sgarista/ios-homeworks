@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
         let profileNavigationController = UINavigationController(rootViewController: LogInViewController())
+        _ = UINavigationController(rootViewController: PhotosViewController())
 
 
         let tabBarController = UITabBarController()
