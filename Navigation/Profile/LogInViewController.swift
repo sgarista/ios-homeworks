@@ -6,20 +6,21 @@ class LogInViewController: UIViewController {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .systemBackground
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         return scrollView
     }()
 
-    private lazy var contentView: UIView = {
 
+    private lazy var contentView: UIView = {
         let contentView = UIView()
-        contentView.backgroundColor = .white
         contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.backgroundColor = .white
 
         return contentView
     }()
@@ -27,8 +28,9 @@ class LogInViewController: UIViewController {
 
     private lazy var loginImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        imageView.image = UIImage(named: "Logo")
 
         return imageView
     }()
@@ -53,17 +55,17 @@ class LogInViewController: UIViewController {
         login.contentVerticalAlignment = .center
         login.layer.borderColor = UIColor.lightGray.cgColor
         login.layer.borderWidth = 0.5
-//        login.borderStyle = .none
 
         login.delegate = self
 
         return login
     }()
 
+
     private lazy var passwordTextField: UITextField = {
         let password = UITextField()
-
         password.translatesAutoresizingMaskIntoConstraints = false
+
         password.textColor = .black
         password.font = .systemFont(ofSize: 16, weight: .regular)
         password.tintColor = .lightGray
@@ -79,22 +81,12 @@ class LogInViewController: UIViewController {
         password.contentVerticalAlignment = .center
         password.layer.borderColor = UIColor.lightGray.cgColor
         password.layer.borderWidth = 0.5
-//        password.borderStyle = .none
 
         password.delegate = self
 
         return password
     }()
 
-//    private let separatorView: UIView = {
-//        let separatorView = UIView()
-//        separatorView.translatesAutoresizingMaskIntoConstraints = false
-//        separatorView.backgroundColor = .lightGray
-//        separatorView.frame.size.height = 0.5
-//
-//
-//        return separatorView
-//    }()
 
     private lazy var stackView: UIStackView = {
         var stackView = UIStackView()
@@ -107,16 +99,14 @@ class LogInViewController: UIViewController {
         stackView.alignment = .fill
         stackView.spacing = -1
         stackView.layer.cornerRadius = 10
-//        stackView.layer.borderColor = UIColor.lightGray.cgColor
-//        stackView.layer.borderWidth = 0.5
 
         return stackView
     }()
 
     var loginStatusButton: UIButton = {
         let button = UIButton()
-
         button.translatesAutoresizingMaskIntoConstraints = false
+
         button.setTitle("Log In", for: .normal)
         button.layer.cornerRadius = 10
         button.setBackgroundImage(UIImage(named: "BluePixel"), for: .normal)
@@ -139,12 +129,10 @@ class LogInViewController: UIViewController {
 
         loginStatusButton.addTarget(UIEvent(), action: #selector(buttonPressed(_:)), for: .touchUpInside)
 
-
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
     }
+
 
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
@@ -156,6 +144,7 @@ class LogInViewController: UIViewController {
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
     }
 
+
     @objc func keyboardWillHide(notification: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
     }
@@ -165,25 +154,20 @@ class LogInViewController: UIViewController {
 
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-
     }
 
 
     private func addSubviews() {
 
         view.addSubview(scrollView)
-
         scrollView.addSubview(contentView)
         contentView.addSubview(loginImageView)
-
         stackView.addArrangedSubview(loginTextField)
-//        stackView.addArrangedSubview(separatorView)
         stackView.addArrangedSubview(passwordTextField)
-
         contentView.addSubview(stackView)
         contentView.addSubview(loginStatusButton)
-
     }
+
 
     private func setupConstraints() {
 
@@ -208,8 +192,6 @@ class LogInViewController: UIViewController {
             loginImageView.heightAnchor.constraint(equalToConstant: 100),
             loginImageView.widthAnchor.constraint(equalToConstant: 100),
 
-//            separatorView.heightAnchor.constraint(equalToConstant: 0.5),
-
             stackView.topAnchor.constraint(equalTo: loginImageView.bottomAnchor, constant: 120),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: -16),
@@ -226,10 +208,8 @@ class LogInViewController: UIViewController {
     @objc func buttonPressed(_ sender: UIButton) {
 
         navigationController?.pushViewController(ProfileViewController(), animated: true)
-
     }
 }
-
 
 
 extension UIImage {

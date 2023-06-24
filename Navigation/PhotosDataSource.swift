@@ -2,12 +2,10 @@
 import UIKit
 
 struct Photo {
-
+    
     var photo = ""
-
 }
 
-let dsf = Photo()
 
 let photosArray = [
     Photo(photo: "1"),
@@ -31,6 +29,5 @@ let photosArray = [
     Photo(photo: "19"),
     Photo(photo: "20"),
 ]
-
 
 

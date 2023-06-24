@@ -5,7 +5,6 @@ class PostTableViewCell: UITableViewCell {
     
     static let  id = "PostTableViewCell"
     
-    
     private let authorLabel: UILabel = {
         let authorLabel = UILabel()
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +82,6 @@ class PostTableViewCell: UITableViewCell {
         
         setupSubviews()
         setupUI()
-        
     }
     
     
@@ -114,7 +112,6 @@ class PostTableViewCell: UITableViewCell {
     
     
     private func setupUI() {
-        
         
         
         NSLayoutConstraint.activate([

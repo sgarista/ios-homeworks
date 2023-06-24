@@ -3,11 +3,10 @@ import UIKit
 
 class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
-   static let headerID = "profileHeaderView"
+    static let headerID = "profileHeaderView"
 
     var avatarImageView: UIImageView = {
         var avatarImageView = UIImageView(image: UIImage(named: "UserPic"))
-
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
 
         avatarImageView.sizeToFit()
@@ -23,7 +22,6 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
     var fullNameLabel: UILabel = {
         let fullNameLabel = UILabel()
-
         fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
 
         fullNameLabel.text = "Randy Marsh"
@@ -36,7 +34,6 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
     var statusLabel: UILabel = {
         var statusLabel = UILabel()
-
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
 
         statusLabel.text = "Waiting for something..."
@@ -48,9 +45,9 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return statusLabel
     }()
 
+
     var statusTextField: UITextField = {
         var statusTextField = UITextField()
-
         statusTextField.translatesAutoresizingMaskIntoConstraints = false
 
         statusTextField.text = ""
@@ -67,9 +64,9 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return statusTextField
     }()
 
+
     var setStatusButton: UIButton = {
         let button = UIButton()
-
         button.translatesAutoresizingMaskIntoConstraints = false
 
         button.setTitle("Set status", for: .normal)
@@ -85,21 +82,19 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         return button
     }()
 
+
     private var statusText: String?
 
 
-
-
     override init(reuseIdentifier: String?) {
-          super.init(reuseIdentifier: reuseIdentifier)
+        super.init(reuseIdentifier: reuseIdentifier)
 
         setupLayout()
 
         setStatusButton.addTarget(UIEvent(), action: #selector(buttonPressed(_:)), for: .touchUpInside)
         statusTextField.addTarget(UIEvent(), action: #selector(statusTextChanged(_:)), for: .editingChanged)
-
-
     }
+
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -107,7 +102,6 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
 
     func setupLayout() {
-
 
         addSubview(avatarImageView)
         addSubview(fullNameLabel)
@@ -139,16 +133,13 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
             setStatusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
-
         ])
     }
-
 
 
     @objc func statusTextChanged(_ textField: UITextField) {
 
         statusText = textField.text
-
     }
 
 
