@@ -51,8 +51,8 @@ class LogInViewController: UIViewController {
         login.returnKeyType = .done
         login.clearButtonMode = .whileEditing
         login.contentVerticalAlignment = .center
-        login.layer.borderColor = UIColor.lightGray.cgColor
-        login.layer.borderWidth = 0.5
+//        login.layer.borderColor = UIColor.lightGray.cgColor
+//        login.layer.borderWidth = 0.5
 //        login.borderStyle = .none
 
         login.delegate = self
@@ -77,8 +77,8 @@ class LogInViewController: UIViewController {
         password.returnKeyType = .done
         password.clearButtonMode = .whileEditing
         password.contentVerticalAlignment = .center
-        password.layer.borderColor = UIColor.lightGray.cgColor
-        password.layer.borderWidth = 0.5
+//        password.layer.borderColor = UIColor.lightGray.cgColor
+//        password.layer.borderWidth = 0.5
 //        password.borderStyle = .none
 
         password.delegate = self
@@ -86,15 +86,15 @@ class LogInViewController: UIViewController {
         return password
     }()
 
-//    private let separatorView: UIView = {
-//        let separatorView = UIView()
-//        separatorView.translatesAutoresizingMaskIntoConstraints = false
-//        separatorView.backgroundColor = .lightGray
-//        separatorView.frame.size.height = 0.5
-//
-//
-//        return separatorView
-//    }()
+    private let separatorView: UIView = {
+        let separatorView = UIView()
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        separatorView.backgroundColor = .lightGray
+        separatorView.frame.size.height = 0.5
+
+
+        return separatorView
+    }()
 
     private lazy var stackView: UIStackView = {
         var stackView = UIStackView()
@@ -102,13 +102,10 @@ class LogInViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.clipsToBounds = true
         stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        stackView.spacing = -1
+        stackView.distribution = .fillProportionally
         stackView.layer.cornerRadius = 10
-//        stackView.layer.borderColor = UIColor.lightGray.cgColor
-//        stackView.layer.borderWidth = 0.5
+        stackView.layer.borderColor = UIColor.lightGray.cgColor
+        stackView.layer.borderWidth = 0.5
 
         return stackView
     }()
@@ -177,7 +174,7 @@ class LogInViewController: UIViewController {
         contentView.addSubview(loginImageView)
 
         stackView.addArrangedSubview(loginTextField)
-//        stackView.addArrangedSubview(separatorView)
+        stackView.addArrangedSubview(separatorView)
         stackView.addArrangedSubview(passwordTextField)
 
         contentView.addSubview(stackView)
@@ -208,7 +205,7 @@ class LogInViewController: UIViewController {
             loginImageView.heightAnchor.constraint(equalToConstant: 100),
             loginImageView.widthAnchor.constraint(equalToConstant: 100),
 
-//            separatorView.heightAnchor.constraint(equalToConstant: 0.5),
+            separatorView.heightAnchor.constraint(equalToConstant: 0.5),
 
             stackView.topAnchor.constraint(equalTo: loginImageView.bottomAnchor, constant: 120),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
