@@ -53,8 +53,6 @@ class LogInViewController: UIViewController {
         login.returnKeyType = .done
         login.clearButtonMode = .whileEditing
         login.contentVerticalAlignment = .center
-        login.layer.borderColor = UIColor.lightGray.cgColor
-        login.layer.borderWidth = 0.5
 
         login.delegate = self
 
@@ -79,12 +77,21 @@ class LogInViewController: UIViewController {
         password.returnKeyType = .done
         password.clearButtonMode = .whileEditing
         password.contentVerticalAlignment = .center
-        password.layer.borderColor = UIColor.lightGray.cgColor
-        password.layer.borderWidth = 0.5
 
         password.delegate = self
 
         return password
+    }()
+
+
+    private let separatorView: UIView = {
+        let separatorView = UIView()
+        separatorView.translatesAutoresizingMaskIntoConstraints = false
+        separatorView.backgroundColor = .lightGray
+        separatorView.frame.size.height = 0.5
+
+
+        return separatorView
     }()
 
 
@@ -94,11 +101,10 @@ class LogInViewController: UIViewController {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.clipsToBounds = true
         stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        stackView.alignment = .fill
-        stackView.spacing = -1
+        stackView.distribution = .fillProportionally
         stackView.layer.cornerRadius = 10
+        stackView.layer.borderColor = UIColor.lightGray.cgColor
+        stackView.layer.borderWidth = 0.5
 
         return stackView
     }()
@@ -163,6 +169,7 @@ class LogInViewController: UIViewController {
         scrollView.addSubview(contentView)
         contentView.addSubview(loginImageView)
         stackView.addArrangedSubview(loginTextField)
+        stackView.addArrangedSubview(separatorView)
         stackView.addArrangedSubview(passwordTextField)
         contentView.addSubview(stackView)
         contentView.addSubview(loginStatusButton)
@@ -175,11 +182,6 @@ class LogInViewController: UIViewController {
 
         NSLayoutConstraint.activate([
 
-            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-
             contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
             contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
             contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
@@ -187,10 +189,17 @@ class LogInViewController: UIViewController {
             contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             contentView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
 
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+
             loginImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 120),
             loginImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             loginImageView.heightAnchor.constraint(equalToConstant: 100),
             loginImageView.widthAnchor.constraint(equalToConstant: 100),
+
+            separatorView.heightAnchor.constraint(equalToConstant: 0.5),
 
             stackView.topAnchor.constraint(equalTo: loginImageView.bottomAnchor, constant: 120),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),

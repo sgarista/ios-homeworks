@@ -4,7 +4,17 @@ import UIKit
 class PostTableViewCell: UITableViewCell {
     
     static let  id = "PostTableViewCell"
-    
+
+    private var postTableCellContentView: UIView = {
+
+        let contentView = UIView()
+        contentView.backgroundColor = .white
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        return contentView
+    }()
+
+
     private let authorLabel: UILabel = {
         let authorLabel = UILabel()
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -98,44 +108,49 @@ class PostTableViewCell: UITableViewCell {
         viewsLabel.text = "Views: \(post.views)"
     }
     
-    
+
     private func setupSubviews() {
-        
-        addSubview(stackView)
+
+        addSubview(postTableCellContentView)
+        postTableCellContentView.addSubview(stackView)
         stackView.addArrangedSubview(authorLabel)
         stackView.addArrangedSubview(postImageView)
-        addSubview(descriptionLabel)
-        addSubview(likesLabel)
-        addSubview(viewsLabel)
+        postTableCellContentView.addSubview(descriptionLabel)
+        postTableCellContentView.addSubview(likesLabel)
+        postTableCellContentView.addSubview(viewsLabel)
     }
-    
-    
+
     
     private func setupUI() {
-        
-        
+
         NSLayoutConstraint.activate([
-            authorLabel.topAnchor.constraint(equalTo: topAnchor),
+
+            postTableCellContentView.topAnchor.constraint(equalTo: topAnchor),
+            postTableCellContentView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            postTableCellContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            postTableCellContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
+
+            authorLabel.topAnchor.constraint(equalTo: postTableCellContentView.topAnchor),
             authorLabel.heightAnchor.constraint(equalToConstant: 40),
             
             postImageView.heightAnchor.constraint(equalTo: postImageView.widthAnchor),
             
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            stackView.leadingAnchor.constraint(equalTo: postTableCellContentView.leadingAnchor, constant: 16),
+            stackView.trailingAnchor.constraint(equalTo: postTableCellContentView.trailingAnchor, constant: -16),
             
             descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            descriptionLabel.leadingAnchor.constraint(equalTo: postTableCellContentView.leadingAnchor, constant: 16),
+            descriptionLabel.trailingAnchor.constraint(equalTo: postTableCellContentView.trailingAnchor, constant: -16),
             
             likesLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            likesLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-            likesLabel.trailingAnchor.constraint(equalTo: centerXAnchor),
-            likesLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16),
+            likesLabel.leadingAnchor.constraint(equalTo: postTableCellContentView.leadingAnchor, constant: 16),
+            likesLabel.trailingAnchor.constraint(equalTo: postTableCellContentView.centerXAnchor),
+            likesLabel.bottomAnchor.constraint(equalTo: postTableCellContentView.bottomAnchor, constant: -16),
             
             viewsLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 16),
-            viewsLabel.leadingAnchor.constraint(equalTo: centerXAnchor),
-            viewsLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-            viewsLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+            viewsLabel.leadingAnchor.constraint(equalTo: postTableCellContentView.centerXAnchor),
+            viewsLabel.trailingAnchor.constraint(equalTo: postTableCellContentView.trailingAnchor, constant: -16),
+            viewsLabel.bottomAnchor.constraint(equalTo: postTableCellContentView.bottomAnchor, constant: -16)
             
         ])
     }
