@@ -1,7 +1,9 @@
 import UIKit
 
 
-class ProfileHeaderView: UIView {
+class ProfileTableHeaderView: UITableViewHeaderFooterView {
+
+   static let headerID = "profileHeaderView"
 
     var avatarImageView: UIImageView = {
         var avatarImageView = UIImageView(image: UIImage(named: "UserPic"))
@@ -87,8 +89,9 @@ class ProfileHeaderView: UIView {
 
 
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+
+    override init(reuseIdentifier: String?) {
+          super.init(reuseIdentifier: reuseIdentifier)
 
         setupLayout()
 
@@ -105,7 +108,6 @@ class ProfileHeaderView: UIView {
 
     func setupLayout() {
 
-        self.backgroundColor = .lightGray
 
         addSubview(avatarImageView)
         addSubview(fullNameLabel)

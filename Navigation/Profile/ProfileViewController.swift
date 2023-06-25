@@ -2,78 +2,101 @@ import UIKit
 
 class ProfileViewController: UIViewController {
 
-    var profileHeaderView: ProfileHeaderView!
 
-    var makeStatusBiggerButton: UIButton = {
-        let button = UIButton()
+    var newsTableView: UITableView = {
+        let tableView = UITableView.init(frame: .zero, style: .grouped)
 
-        button.translatesAutoresizingMaskIntoConstraints = false
+        tableView.translatesAutoresizingMaskIntoConstraints = false
 
-        button.setTitle("Tap me and look what can I do!", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .green
-
-        return button
+        return tableView
     }()
+
+
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        setupView()
+        addSubviews()
+        setupConstraints()
+        setupTableView()
 
+        newsTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.id)
+        newsTableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileTableHeaderView.headerID)
+
+//        newsTableView.headerView(forSection: 0)
+    }
+
+    //    override func viewWillLayoutSubviews() {
+    //
+    //    }
+    //
+
+
+
+
+    private func setupView() {
+
+        view.backgroundColor = .white
         title = "Profile"
 
-        profileHeaderView = ProfileHeaderView()
 
-        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
-        
-        view.addSubview(profileHeaderView)
-        view.addSubview(makeStatusBiggerButton)
+    }
 
+
+    private func addSubviews() {
+
+        view.addSubview(newsTableView)
+        setupTableView()
         setupConstraints()
 
-        makeStatusBiggerButton.addTarget(UIEvent(), action: #selector(funnyButtonPressed(_:)), for: .touchUpInside)
-
-
     }
 
-    override func viewWillLayoutSubviews() {
-
-        profileHeaderView.frame = view.frame
-    }
-
-    func setupConstraints() {
+    private func setupConstraints() {
 
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
 
         NSLayoutConstraint.activate([
-            profileHeaderView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
 
-            makeStatusBiggerButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            makeStatusBiggerButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            makeStatusBiggerButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
-
+            newsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            newsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            newsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            newsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
 
-    @objc func funnyButtonPressed(_ sender: UIButton) {
+    func setupTableView() {
 
-        var result = ""
-        if let status = profileHeaderView.statusLabel.text {
+        newsTableView.dataSource = self
+        newsTableView.delegate = self
 
-            for char in status {
-                if char.isUppercase {
-                    result += char.lowercased()
-                } else if char.isLowercase {
-                    result += char.uppercased()
-                } else {
-                    result += String(char)
-                }
-            }
-            profileHeaderView.statusLabel.text = result
+    }
+}
+
+
+extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        postArray.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard let cell = newsTableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+
+        let news = postArray[indexPath.row]
+        cell.configure(with: news)
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard section == 0, let headerView = newsTableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHeaderView.headerID) as? ProfileTableHeaderView else {
+            return nil
         }
+
+        return headerView
+
     }
 }
