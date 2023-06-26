@@ -5,7 +5,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
     static let headerID = "profileHeaderView"
 
-    var avatarImageView: UIImageView = {
+    private lazy var avatarImageView: UIImageView = {
         var avatarImageView = UIImageView(image: UIImage(named: "UserPic"))
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -15,6 +15,13 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         avatarImageView.clipsToBounds = true
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
+
+        avatarImageView.isUserInteractionEnabled = true
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(avatarTap))
+
+        tap.numberOfTapsRequired = 1
+        avatarImageView.addGestureRecognizer(tap)
 
         return avatarImageView
     }()
@@ -154,6 +161,10 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         } else {
             statusLabel.text = statusTextField.placeholder ?? "ubiquitous emptiness"
         }
+    }
+
+    @objc private func avatarTap() {
+        print("Avatar taped")
     }
 }
 
