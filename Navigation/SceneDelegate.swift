@@ -13,6 +13,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
         let profileNavigationController = UINavigationController(rootViewController: LogInViewController())
+        let photosNavigationController = UINavigationController(rootViewController: PhotosViewController())
 
 
         let tabBarController = UITabBarController()
@@ -25,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         profileNavigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.circle"), tag: 1)
 
+        photosNavigationController.title = "Photo Gallery"
 
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
 
@@ -46,12 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
 
-
         self.window = window
-
-
-        
-        
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

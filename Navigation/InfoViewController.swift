@@ -11,6 +11,7 @@ class InfoViewController: UIViewController {
         return button
     }()
 
+
     private lazy var alertButton: UIButton = {
         let button = UIButton()
         
@@ -21,7 +22,8 @@ class InfoViewController: UIViewController {
 
         return button
     }()
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,18 +33,16 @@ class InfoViewController: UIViewController {
         infoButton.addTarget(self, action: #selector(showInfoViewController(_:)), for: .touchUpInside)
         alertButton.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
 
-
         if let glass = UIImage(named: "Glass") {
             view.backgroundColor = UIColor(patternImage: glass)
         } else {
             view.backgroundColor = .systemBlue
         }
 
-
-
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
-        NSLayoutConstraint.activate([infoButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.0), infoButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 240.0), infoButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: -320.0), infoButton.heightAnchor.constraint(equalToConstant: 44.0)])
-
+        NSLayoutConstraint.activate([
+            infoButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.0), infoButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 240.0), infoButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: -320.0), infoButton.heightAnchor.constraint(equalToConstant: 44.0)
+        ])
     }
 
 
@@ -60,8 +60,8 @@ class InfoViewController: UIViewController {
     
     @objc func showInfoViewController(_ sender: UIButton) {
         dismiss(animated: true)
-
     }
+
 
     @objc func showAlert() {
 
