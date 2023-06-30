@@ -31,7 +31,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
 
     func setupSubview() {
 
-        addSubview(photoImageView)
+        contentView.addSubview(photoImageView)
     }
 
 

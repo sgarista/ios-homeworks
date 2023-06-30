@@ -3,6 +3,7 @@ import UIKit
 
 class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
+
     static let headerID = "profileHeaderView"
 
     private lazy var avatarImageView: UIImageView = {
@@ -92,10 +93,64 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
     private var statusText: String?
 
+    // для анимации
+
+
+
+    let backView: UIView = {
+        var backView = UIView()
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+            backView.frame = CGRect(x: 0, y: statusBarHeight + 5, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+
+        } else {
+            let statusBarHeight = UIApplication.shared.statusBarFrame.height
+            backView.frame = CGRect(x: 0, y: statusBarHeight + 5, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
+        backView.translatesAutoresizingMaskIntoConstraints = false
+
+
+        return backView
+    }()
+
+
+    let frontView: UIView = {
+        var frontView = UIView()
+        if #available(iOS 13.0, *) {
+            let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+            let statusBarHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+            frontView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+
+
+        } else {
+            let statusBarHeight = UIApplication.shared.statusBarFrame.height
+            frontView.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        }
+
+        frontView.translatesAutoresizingMaskIntoConstraints = false
+
+        return frontView
+    }()
+
+
+    private lazy var closeButton: UIButton = {
+        var closeButton = UIButton(frame: CGRect(x: frontView.frame.width - 60, y: 0, width: 60, height: 60))
+        closeButton.setImage(UIImage(systemName: "cross.fill"), for: .normal)
+        closeButton.tintColor = UIColor.black
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.addTarget(self, action: #selector(cancelAnimation), for: .touchUpInside)
+
+        
+        return closeButton
+    }()
+
+
 
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
 
+        setupView()
         setupLayout()
 
         setStatusButton.addTarget(UIEvent(), action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -108,14 +163,17 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     }
 
 
-    func setupLayout() {
+    func setupView() {
 
         addSubview(avatarImageView)
         addSubview(fullNameLabel)
         addSubview(statusLabel)
         addSubview(statusTextField)
         addSubview(setStatusButton)
+    }
 
+
+    func setupLayout() {
 
         NSLayoutConstraint.activate([
             avatarImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
@@ -140,7 +198,42 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
             setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
             setStatusButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16)
+
         ])
+    }
+
+
+    func animationViewSetup() {
+        guard let mainWindow = UIApplication.shared.windows.first else {
+            return
+        }
+
+        let statusBarHeight = mainWindow.safeAreaInsets.top
+
+        mainWindow.addSubview(backView)
+        backView.addSubview(frontView)
+        frontView.addSubview(avatarImageView)
+        backView.addSubview(fullNameLabel)
+        backView.addSubview(statusLabel)
+        backView.addSubview(statusTextField)
+        backView.addSubview(setStatusButton)
+        backView.bringSubviewToFront(frontView)
+        frontView.addSubview(closeButton)
+
+        mainWindow.insertSubview(avatarImageView, aboveSubview: frontView)
+        frontView.alpha = 0.0
+        closeButton.alpha = 0.0
+
+        avatarImageView.transform = CGAffineTransform(translationX: 0, y: statusBarHeight)
+    }
+
+
+    func removeSubView() {
+
+        backView.removeFromSuperview()
+        frontView.removeFromSuperview()
+        closeButton.removeFromSuperview()
+
     }
 
 
@@ -163,9 +256,76 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
         }
     }
 
+
     @objc private func avatarTap() {
-        print("Avatar taped")
+
+        animationViewSetup()
+        layoutIfNeeded()
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.0,
+            options: .curveLinear
+        ) {
+            self.avatarImageView.center = CGPoint(
+                x: UIScreen.main.bounds.midX,
+                y: UIScreen.main.bounds.midY
+            )
+            self.avatarImageView.transform = CGAffineTransform(
+                scaleX: UIScreen.main.bounds.width / self.avatarImageView.bounds.width,
+                y: UIScreen.main.bounds.width / self.avatarImageView.bounds.width
+            )
+            self.avatarImageView.layer.cornerRadius = 0
+            self.frontView.backgroundColor = .systemBackground
+            self.frontView.alpha = 0.8
+        } completion: { finished in
+            print("Avatar taped")
+
+            UIView.animate(
+                withDuration: 0.3,
+                delay: 0.0,
+                options: .curveLinear
+            ) {
+                self.closeButton.alpha = 1.0
+            } completion: { finished in
+                print("button created")
+            }
+        }
+    }
+
+
+    @objc func cancelAnimation() {
+
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0.0,
+            options: .curveLinear
+        ) {
+            self.closeButton.alpha = 0.0
+        } completion: { finished in
+            print("button delete")
+
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0.0,
+                options: .curveLinear
+            ) {
+                self.setupLayout()
+                self.layoutIfNeeded()
+                self.avatarImageView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+                self.avatarImageView.transform = .identity
+                self.avatarImageView.layer.cornerRadius = 50
+                self.frontView.alpha = 0.0
+            } completion: { finished in
+                print("image  small")
+
+                self.setupView()
+                self.setupLayout()
+                self.layoutIfNeeded()
+                self.removeSubView()
+
+            }
+        }
     }
 }
-
 
