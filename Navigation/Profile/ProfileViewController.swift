@@ -32,7 +32,7 @@ class ProfileViewController: UIViewController {
     }
 
 
-    private func addSubviews() {
+     func addSubviews() {
 
         view.addSubview(newsTableView)
         setupTableView()
@@ -40,7 +40,7 @@ class ProfileViewController: UIViewController {
     }
 
 
-    private func setupConstraints() {
+     func setupConstraints() {
 
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
 
