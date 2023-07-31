@@ -2,13 +2,13 @@
 import UIKit
 
 
-struct Post {
+public struct Post {
     
-    let author: String
-    let description: String
-    let image: String
-    var likes: Int
-    var views: Int
+    public let author: String
+    public let description: String
+    public let image: String
+    public var likes: Int
+    public var views: Int
 }
 
 
@@ -41,4 +41,4 @@ var fourPost = Post(
     views: 34555)
 
 
-var postArray = [onePost, twoPost, threePost, fourPost]
+public var postArray = [onePost, twoPost, threePost, fourPost]
