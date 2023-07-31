@@ -1,4 +1,5 @@
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
 
@@ -27,7 +28,13 @@ class ProfileViewController: UIViewController {
 
     private func setupView() {
 
-        view.backgroundColor = .white
+
+//        #if DEBUG
+//        view.backgroundColor = .blue
+//        #else
+//        view.backgroundColor = .green
+//        #endif
+
         title = "Profile"
     }
 
@@ -59,6 +66,12 @@ class ProfileViewController: UIViewController {
         newsTableView.delegate = self
 
         newsTableView.sectionFooterHeight = 1
+
+#if DEBUG
+newsTableView.backgroundColor = .blue
+#else
+newsTableView.backgroundColor = .green
+#endif
     }
 }
 
