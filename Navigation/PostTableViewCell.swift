@@ -26,6 +26,7 @@ class PostTableViewCell: UITableViewCell {
         return authorLabel
     }()
     
+    
     private let postImageView: UIImageView = {
         var postImageView = UIImageView()
         postImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -36,6 +37,7 @@ class PostTableViewCell: UITableViewCell {
         
         return postImageView
     }()
+    
     
     private let descriptionLabel: UILabel = {
         let descriptionLabel = UILabel()
@@ -48,6 +50,7 @@ class PostTableViewCell: UITableViewCell {
         return descriptionLabel
     }()
     
+    
     private let likesLabel: UILabel = {
         let likesLabel = UILabel()
         likesLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -57,6 +60,7 @@ class PostTableViewCell: UITableViewCell {
         
         return likesLabel
     }()
+    
     
     private let viewsLabel: UILabel = {
         let viewsLabel = UILabel()
@@ -82,11 +86,14 @@ class PostTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setupUI()
         
+        setupSubviews()
+        setupUI()
     }
+    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -101,8 +108,8 @@ class PostTableViewCell: UITableViewCell {
         viewsLabel.text = "Views: \(post.views)"
     }
     
-    
-    private func setupUI() {
+
+    private func setupSubviews() {
 
         addSubview(postTableCellContentView)
         postTableCellContentView.addSubview(stackView)
@@ -111,17 +118,17 @@ class PostTableViewCell: UITableViewCell {
         postTableCellContentView.addSubview(descriptionLabel)
         postTableCellContentView.addSubview(likesLabel)
         postTableCellContentView.addSubview(viewsLabel)
-        
+    }
+
+    
+    private func setupUI() {
+
         NSLayoutConstraint.activate([
 
             postTableCellContentView.topAnchor.constraint(equalTo: topAnchor),
             postTableCellContentView.bottomAnchor.constraint(equalTo: bottomAnchor),
             postTableCellContentView.leadingAnchor.constraint(equalTo: leadingAnchor),
             postTableCellContentView.trailingAnchor.constraint(equalTo: trailingAnchor),
-
-
-
-
 
             authorLabel.topAnchor.constraint(equalTo: postTableCellContentView.topAnchor),
             authorLabel.heightAnchor.constraint(equalToConstant: 40),
@@ -130,7 +137,6 @@ class PostTableViewCell: UITableViewCell {
             
             stackView.leadingAnchor.constraint(equalTo: postTableCellContentView.leadingAnchor, constant: 16),
             stackView.trailingAnchor.constraint(equalTo: postTableCellContentView.trailingAnchor, constant: -16),
-            
             
             descriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
             descriptionLabel.leadingAnchor.constraint(equalTo: postTableCellContentView.leadingAnchor, constant: 16),

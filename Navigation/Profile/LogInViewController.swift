@@ -6,20 +6,21 @@ class LogInViewController: UIViewController {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.backgroundColor = .systemBackground
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
 
         return scrollView
     }()
 
-    private lazy var contentView: UIView = {
 
+    private lazy var contentView: UIView = {
         let contentView = UIView()
-        contentView.backgroundColor = .white
         contentView.translatesAutoresizingMaskIntoConstraints = false
+
+        contentView.backgroundColor = .white
 
         return contentView
     }()
@@ -27,8 +28,9 @@ class LogInViewController: UIViewController {
 
     private lazy var loginImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "Logo")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        imageView.image = UIImage(named: "Logo")
 
         return imageView
     }()
@@ -57,10 +59,11 @@ class LogInViewController: UIViewController {
         return login
     }()
 
+
     private lazy var passwordTextField: UITextField = {
         let password = UITextField()
-
         password.translatesAutoresizingMaskIntoConstraints = false
+
         password.textColor = .black
         password.font = .systemFont(ofSize: 16, weight: .regular)
         password.tintColor = .lightGray
@@ -80,6 +83,7 @@ class LogInViewController: UIViewController {
         return password
     }()
 
+
     private let separatorView: UIView = {
         let separatorView = UIView()
         separatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -89,6 +93,7 @@ class LogInViewController: UIViewController {
 
         return separatorView
     }()
+
 
     private lazy var stackView: UIStackView = {
         var stackView = UIStackView()
@@ -106,8 +111,8 @@ class LogInViewController: UIViewController {
 
     var loginStatusButton: UIButton = {
         let button = UIButton()
-
         button.translatesAutoresizingMaskIntoConstraints = false
+
         button.setTitle("Log In", for: .normal)
         button.layer.cornerRadius = 10
         button.setBackgroundImage(UIImage(named: "BluePixel"), for: .normal)
@@ -130,12 +135,10 @@ class LogInViewController: UIViewController {
 
         loginStatusButton.addTarget(UIEvent(), action: #selector(buttonPressed(_:)), for: .touchUpInside)
 
-
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
-
     }
+
 
     @objc func keyboardWillShow(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
@@ -147,6 +150,7 @@ class LogInViewController: UIViewController {
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardHeight, right: 0)
     }
 
+
     @objc func keyboardWillHide(notification: NSNotification) {
         scrollView.contentInset = UIEdgeInsets.zero
     }
@@ -156,25 +160,21 @@ class LogInViewController: UIViewController {
 
         view.backgroundColor = .white
         navigationController?.navigationBar.isHidden = true
-
     }
 
 
     private func addSubviews() {
 
         view.addSubview(scrollView)
-
         scrollView.addSubview(contentView)
         contentView.addSubview(loginImageView)
-
         stackView.addArrangedSubview(loginTextField)
         stackView.addArrangedSubview(separatorView)
         stackView.addArrangedSubview(passwordTextField)
-
         contentView.addSubview(stackView)
         contentView.addSubview(loginStatusButton)
-
     }
+
 
     private func setupConstraints() {
 
@@ -217,10 +217,8 @@ class LogInViewController: UIViewController {
     @objc func buttonPressed(_ sender: UIButton) {
 
         navigationController?.pushViewController(ProfileViewController(), animated: true)
-
     }
 }
-
 
 
 extension UIImage {
