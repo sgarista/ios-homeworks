@@ -97,7 +97,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
 
 
 
-    let backView: UIView = {
+var backView: UIView = {
         var backView = UIView()
         if #available(iOS 13.0, *) {
             let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
@@ -115,7 +115,7 @@ class ProfileTableHeaderView: UITableViewHeaderFooterView {
     }()
 
 
-    let frontView: UIView = {
+    var frontView: UIView = {
         var frontView = UIView()
         if #available(iOS 13.0, *) {
             let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
