@@ -192,6 +192,8 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         avatarOriginPoint = avatarImageView.center
         let scale = UIScreen.main.bounds.width / avatarImageView.bounds.width
 
+        bringSubviewToFront(avatarImageView)
+
         UIView.animate(withDuration: 0.5) {
             self.avatarImageView.center = CGPoint(x: UIScreen.main.bounds.midX,
                                                   y: UIScreen.main.bounds.midY - self.avatarOriginPoint.y)
