@@ -4,7 +4,7 @@ import StorageService
 class ProfileViewController: UIViewController {
 
 
-    var newsTableView: UITableView = {
+   static var newsTableView: UITableView = {
         let tableView = UITableView.init(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -20,9 +20,9 @@ class ProfileViewController: UIViewController {
         setupConstraints()
         setupTableView()
 
-        newsTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.id)
-        newsTableView.register(ProfileTableHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileTableHeaderView.headerID)
-        newsTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.id)
+        Self.newsTableView.register(PostTableViewCell.self, forCellReuseIdentifier: PostTableViewCell.id)
+        Self.newsTableView.register(ProfileHeaderView.self, forHeaderFooterViewReuseIdentifier: ProfileHeaderView.headerID)
+        Self.newsTableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: PhotosTableViewCell.id)
     }
 
 
@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
 
      func addSubviews() {
 
-        view.addSubview(newsTableView)
+         view.addSubview(Self.newsTableView)
         setupTableView()
         setupConstraints()
     }
@@ -52,25 +52,25 @@ class ProfileViewController: UIViewController {
         let safeAreaLayoutGuide = view.safeAreaLayoutGuide
 
         NSLayoutConstraint.activate([
-            newsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            newsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            newsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
-            newsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+            Self.newsTableView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            Self.newsTableView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            Self.newsTableView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            Self.newsTableView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
         ])
     }
 
 
     func setupTableView() {
 
-        newsTableView.dataSource = self
-        newsTableView.delegate = self
+        Self.newsTableView.dataSource = self
+        Self.newsTableView.delegate = self
 
-        newsTableView.sectionFooterHeight = 1
+        Self.newsTableView.sectionFooterHeight = 1
 
 #if DEBUG
-newsTableView.backgroundColor = .blue
+        Self.newsTableView.backgroundColor = .blue
 #else
-newsTableView.backgroundColor = .green
+        Self.newsTableView.backgroundColor = .green
 #endif
     }
 }
@@ -98,13 +98,13 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         switch indexPath.section {
 
         case 0:
-            let cell = newsTableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.id, for: indexPath) as! PhotosTableViewCell
+            let cell = Self.newsTableView.dequeueReusableCell(withIdentifier: PhotosTableViewCell.id, for: indexPath) as! PhotosTableViewCell
             cell.configure(with: photosArray)
 
             return cell
         case 1:
 
-            let cell = newsTableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as! PostTableViewCell
+            let cell = Self.newsTableView.dequeueReusableCell(withIdentifier: PostTableViewCell.id, for: indexPath) as! PostTableViewCell
 
             let news = postArray[indexPath.row]
             cell.configure(with: news)
@@ -118,7 +118,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        guard section == 0, let headerView = newsTableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileTableHeaderView.headerID) as? ProfileTableHeaderView else {
+        guard section == 0, let headerView = Self.newsTableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.headerID) as? ProfileHeaderView else {
             return nil
         }
 
