@@ -1,10 +1,15 @@
 import UIKit
 import StorageService
+import iOSIntPackage
 
 
 class PostTableViewCell: UITableViewCell {
     
     static let  id = "PostTableViewCell"
+
+
+    let imageProcessor = ImageProcessor()
+
 
     private var postTableCellContentView: UIView = {
 
@@ -102,8 +107,17 @@ class PostTableViewCell: UITableViewCell {
     
     
     func configure(with post: Post) {
+
+        imageProcessor.processImage(sourceImage: UIImage(named: post.image)!, filter: .noir) { processedImage in
+            if let processedImage = processedImage {
+                postImageView.image = processedImage
+            } else {
+                print("Не удалось обработать изображение")
+            }
+        }
+
+
         authorLabel.text = post.author
-        postImageView.image = UIImage(named: post.image)
         descriptionLabel.text = post.description
         likesLabel.text = "Likes: \(post.likes)"
         viewsLabel.text = "Views: \(post.views)"
