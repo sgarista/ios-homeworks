@@ -1,7 +1,7 @@
 import UIKit
 
 
-class ProfileTableHeaderView: UITableViewHeaderFooterView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
 
 
     static let headerID = "profileHeaderView"
