@@ -4,6 +4,9 @@ import StorageService
 class ProfileViewController: UIViewController {
 
 
+   static var currentUser: User?
+
+
    static var newsTableView: UITableView = {
         let tableView = UITableView.init(frame: .zero, style: .grouped)
         tableView.translatesAutoresizingMaskIntoConstraints = false
@@ -27,13 +30,6 @@ class ProfileViewController: UIViewController {
 
 
     private func setupView() {
-
-
-//        #if DEBUG
-//        view.backgroundColor = .blue
-//        #else
-//        view.backgroundColor = .green
-//        #endif
 
         title = "Profile"
     }
@@ -64,14 +60,16 @@ class ProfileViewController: UIViewController {
 
         Self.newsTableView.dataSource = self
         Self.newsTableView.delegate = self
-
         Self.newsTableView.sectionFooterHeight = 1
 
+
 #if DEBUG
-        Self.newsTableView.backgroundColor = .blue
+        Self.newsTableView.backgroundColor = .systemTeal
 #else
-        Self.newsTableView.backgroundColor = .green
+        Self.newsTableView.backgroundColor = .white
 #endif
+
+
     }
 }
 

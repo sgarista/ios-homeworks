@@ -7,7 +7,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     static let headerID = "profileHeaderView"
 
     private lazy var avatarImageView: UIImageView = {
-        var avatarImageView = UIImageView(image: UIImage(named: "UserPic"))
+        var avatarImageView = UIImageView()
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
 
         avatarImageView.sizeToFit()
@@ -32,7 +32,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         let fullNameLabel = UILabel()
         fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        fullNameLabel.text = "Randy Marsh"
         fullNameLabel.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         fullNameLabel.textColor = .black
 
@@ -44,7 +43,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         var statusLabel = UILabel()
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        statusLabel.text = "Waiting for something..."
         statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
         statusLabel.lineBreakMode = .byWordWrapping
@@ -151,6 +149,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         super.init(reuseIdentifier: reuseIdentifier)
 
         setupView()
+        setupInfo()
         setupLayout()
 
         setStatusButton.addTarget(UIEvent(), action: #selector(buttonPressed(_:)), for: .touchUpInside)
@@ -170,6 +169,24 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         addSubview(statusLabel)
         addSubview(statusTextField)
         addSubview(setStatusButton)
+    }
+
+
+    func setupInfo() {
+
+        if let user = ProfileViewController.currentUser {
+
+            avatarImageView.image = user.avatar
+            fullNameLabel.text = user.fullName
+            statusLabel.text = user.status
+            
+        } else {
+
+            avatarImageView = UIImageView(image: UIImage(named: "UserPic"))
+            fullNameLabel.text = "Randy Marsh"
+            statusLabel.text = "Waiting for something..."
+
+        }
     }
 
 

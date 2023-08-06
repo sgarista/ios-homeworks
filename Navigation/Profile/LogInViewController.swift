@@ -1,4 +1,5 @@
 import UIKit
+import StorageService
 
 
 class LogInViewController: UIViewController {
@@ -216,7 +217,23 @@ class LogInViewController: UIViewController {
 
     @objc func buttonPressed(_ sender: UIButton) {
 
-        navigationController?.pushViewController(ProfileViewController(), animated: true)
+        let login = loginTextField.text ?? ""
+
+        #if DEBUG
+        let userService = TestUserService()
+        #else
+        let userService = CurrentUserService()
+        #endif
+
+        if let user = userService.loginCheck(login: login) {
+            
+            ProfileViewController.currentUser = user
+
+            navigationController?.pushViewController(ProfileViewController(), animated: true)
+
+        } else {
+            print("вход воспрещен")
+        }
     }
 }
 
