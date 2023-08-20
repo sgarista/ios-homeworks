@@ -10,6 +10,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: scene)
 
+        let loginInspector = LoginInspector()
+        LogInViewController.loginDelegate = loginInspector
+
 
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
         let profileNavigationController = UINavigationController(rootViewController: LogInViewController())
@@ -30,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
 
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 1
 
         let rootViewController = ViewController()
         rootViewController.view.backgroundColor = .white

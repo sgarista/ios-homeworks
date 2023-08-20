@@ -5,6 +5,9 @@ import StorageService
 class LogInViewController: UIViewController {
 
 
+    static var loginDelegate: LoginViewControllerDelegate?
+
+
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -218,23 +221,36 @@ class LogInViewController: UIViewController {
     @objc func buttonPressed(_ sender: UIButton) {
 
         let login = loginTextField.text ?? ""
+        let password = passwordTextField.text ?? ""
 
-        #if DEBUG
+#if DEBUG
         let userService = TestUserService()
-        #else
+#else
         let userService = CurrentUserService()
-        #endif
+#endif
 
-        if let user = userService.loginCheck(login: login) {
-            
+        if Self.loginDelegate?.check(login: login, password: password) == true {
+
+            let user = userService.loginCheck(login: login)
+
             ProfileViewController.currentUser = user
 
             navigationController?.pushViewController(ProfileViewController(), animated: true)
 
         } else {
-            print("вход воспрещен")
+
+            invalidLoginOrPassword()
         }
     }
+
+
+    func invalidLoginOrPassword() {
+        let alertController = UIAlertController(title: "Ошибка", message: "Неверный логин или пароль", preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "ОК", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+
 }
 
 
