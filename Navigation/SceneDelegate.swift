@@ -10,7 +10,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let window = UIWindow(windowScene: scene)
 
-        let loginInspector = LoginInspector()
+
+
+        let factory = MyLoginFactory()
+        let loginInspector = factory.makeLoginInspector()
+
         LogInViewController.loginDelegate = loginInspector
 
 
