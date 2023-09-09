@@ -11,6 +11,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
 
 
+
+        let factory = MyLoginFactory()
+        let loginInspector = factory.makeLoginInspector()
+
+        LogInViewController.loginDelegate = loginInspector
+
+
         let feedNavigationController = UINavigationController(rootViewController: FeedViewController())
         let profileNavigationController = UINavigationController(rootViewController: LogInViewController())
         let photosNavigationController = UINavigationController(rootViewController: PhotosViewController())
@@ -30,7 +37,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         tabBarController.viewControllers = [feedNavigationController, profileNavigationController]
 
-        tabBarController.selectedIndex = 0
+        tabBarController.selectedIndex = 1
 
         let rootViewController = ViewController()
         rootViewController.view.backgroundColor = .white

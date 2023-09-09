@@ -21,7 +21,7 @@ var users = [
         login: "cartman",
         fullName: "Eric Theodore Cartman",
         avatar: UIImage(named: "Cartman"),
-        status: "Евреи не могут играть в баскетбол"),
+        status: "Никогда не слышал, чтобы слова «всего лишь» и «конфеты» употреблялись в одном предложении!"),
     User(
         login: "kotov",
         fullName: "Serge Kotov",
