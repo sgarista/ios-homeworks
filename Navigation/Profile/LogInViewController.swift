@@ -49,6 +49,7 @@ class LogInViewController: UIViewController {
         login.tintColor = .lightGray
         login.autocapitalizationType = .none
         login.placeholder = "Email or phone"
+        login.text = "cartman"
         login.backgroundColor = .systemGray6
         login.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: login.frame.height))
         login.leftViewMode = .always
@@ -74,6 +75,7 @@ class LogInViewController: UIViewController {
         password.autocapitalizationType = .none
         password.isSecureTextEntry = true
         password.placeholder = "Password"
+        password.text = "fatman"
         password.backgroundColor = .systemGray6
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: password.frame.height))
         password.leftViewMode = .always
