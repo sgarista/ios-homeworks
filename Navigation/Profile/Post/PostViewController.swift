@@ -5,18 +5,17 @@ import StorageService
 class PostViewController: UIViewController {
     
     var post = [Post]()
-    
-    
-    private lazy var postButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Назад", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        
+
+
+    private lazy var postButton: CustomButton = {
+        let button = CustomButton(title: "Назад", titleColor: .black, buttonAction: { [weak self] in
+            self?.navigationController?.popViewController(animated: true)
+        })
+
         return button
     }()
-    
-    
+
+
     @objc func showInfoViewController() {
         
         let infoNavigationController = InfoViewController()
@@ -32,7 +31,6 @@ class PostViewController: UIViewController {
         showBarButton()
         setupPostButtonView()
         activateConstarints()
-        postButton.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
     }
     
     
@@ -56,10 +54,6 @@ class PostViewController: UIViewController {
         NSLayoutConstraint.activate([postButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 20.0), postButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: 240.0), postButton.centerYAnchor.constraint(equalTo: safeAreaLayoutGuide.centerYAnchor, constant: 280.0), postButton.heightAnchor.constraint(equalToConstant: 44.0)])
     }
     
-    
-    @objc func buttonPressed(_ sender: UIButton) {
-        
-        navigationController?.popViewController(animated: true)
-    }
+
 }
 
