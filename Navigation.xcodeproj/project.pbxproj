@@ -40,6 +40,7 @@
 		3ACDA66C2A4331EE00DFFA3E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDA66B2A4331EE00DFFA3E /* PostTableViewCell.swift */; };
 		3AEA31F82AACD0B900FF8F5A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3AEA31F72AACD0B900FF8F5A /* iOSIntPackage */; };
 		3AF064112ABC86340018E400 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF064102ABC86340018E400 /* CustomButton.swift */; };
+		3AF064132ABE08C30018E400 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF064122ABE08C20018E400 /* FeedModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +101,7 @@
 		3AC7B78E2A921A6B000D03F9 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
 		3ACDA66B2A4331EE00DFFA3E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		3AF064102ABC86340018E400 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		3AF064122ABE08C20018E400 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -185,6 +187,7 @@
 				3AC7B78C2A921A2A000D03F9 /* LoginFactory.swift */,
 				3AC7B78E2A921A6B000D03F9 /* MyLoginFactory.swift */,
 				3AF064102ABC86340018E400 /* CustomButton.swift */,
+				3AF064122ABE08C20018E400 /* FeedModel.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF064112ABC86340018E400 /* CustomButton.swift in Sources */,
+				3AF064132ABE08C30018E400 /* FeedModel.swift in Sources */,
 				3A2052332A45A5390017578A /* PhotosDataSource.swift in Sources */,
 				3A3C5AEB2A2CA0140072E910 /* ViewController.swift in Sources */,
 				3A9FBCEC2A3CC257002EEA34 /* LogInViewController.swift in Sources */,

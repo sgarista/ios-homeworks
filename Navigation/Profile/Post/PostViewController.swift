@@ -11,6 +11,7 @@ class PostViewController: UIViewController {
         let button = CustomButton(title: "Назад", titleColor: .black, buttonAction: { [weak self] in
             self?.navigationController?.popViewController(animated: true)
         })
+        button.translatesAutoresizingMaskIntoConstraints = false
 
         return button
     }()
