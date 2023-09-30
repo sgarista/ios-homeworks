@@ -25,6 +25,7 @@
 		3A3C5AF32A2CA0170072E910 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A3C5AF12A2CA0170072E910 /* LaunchScreen.storyboard */; };
 		3A3C5AFB2A2CD1800072E910 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5AFA2A2CD1800072E910 /* FeedViewController.swift */; };
 		3A3C5AFD2A2CD19F0072E910 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3C5AFC2A2CD19F0072E910 /* ProfileViewController.swift */; };
+		3A477C0A2AC735A800A2DA20 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A477C092AC735A800A2DA20 /* FeedViewModel.swift */; };
 		3A4C20D62A457FD60053DEC1 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C20D52A457FD60053DEC1 /* PhotosTableViewCell.swift */; };
 		3A52CF2B2A7FEC7F00D11A91 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF2A2A7FEC7F00D11A91 /* User.swift */; };
 		3A52CF2D2A7FED2800D11A91 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF2C2A7FED2800D11A91 /* UserService.swift */; };
@@ -86,6 +87,7 @@
 		3A3C5AFA2A2CD1800072E910 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		3A3C5AFC2A2CD19F0072E910 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		3A3C5AFE2A2CDD400072E910 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		3A477C092AC735A800A2DA20 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		3A4C20D52A457FD60053DEC1 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		3A52CF2A2A7FEC7F00D11A91 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3A52CF2C2A7FED2800D11A91 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
@@ -174,6 +176,8 @@
 				3A3C5AE82A2CA0140072E910 /* SceneDelegate.swift */,
 				3A3C5AEA2A2CA0140072E910 /* ViewController.swift */,
 				3A3C5AFA2A2CD1800072E910 /* FeedViewController.swift */,
+				3A477C092AC735A800A2DA20 /* FeedViewModel.swift */,
+				3AF064122ABE08C20018E400 /* FeedModel.swift */,
 				3A23AC622A2DE830006F7F28 /* InfoViewController.swift */,
 				3A90325E2A7FD2070063BDB1 /* Support */,
 				3A52CF2A2A7FEC7F00D11A91 /* User.swift */,
@@ -187,7 +191,6 @@
 				3AC7B78C2A921A2A000D03F9 /* LoginFactory.swift */,
 				3AC7B78E2A921A6B000D03F9 /* MyLoginFactory.swift */,
 				3AF064102ABC86340018E400 /* CustomButton.swift */,
-				3AF064122ABE08C20018E400 /* FeedModel.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -360,6 +363,7 @@
 				3AC7B7892A8E69E7000D03F9 /* LoginViewControllerDelegate.swift in Sources */,
 				3A3C5AFB2A2CD1800072E910 /* FeedViewController.swift in Sources */,
 				3A28AD812A42454B00F83ED4 /* UITableView+Extensions.swift in Sources */,
+				3A477C0A2AC735A800A2DA20 /* FeedViewModel.swift in Sources */,
 				3A52CF3A2A801DBE00D11A91 /* UserDataSource.swift in Sources */,
 				3A52CF2F2A7FF19E00D11A91 /* CurrentUserService.swift in Sources */,
 				3AC7B78D2A921A2A000D03F9 /* LoginFactory.swift in Sources */,
