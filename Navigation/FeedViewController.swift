@@ -5,6 +5,9 @@ import UIKit
 class FeedViewController: UIViewController {
 
 
+    var viewModel = FeedViewModel()
+
+
     private var resultLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -94,11 +97,16 @@ class FeedViewController: UIViewController {
         
         setupConstraints()
 
-        checkGuessButton.addTarget(self, action: #selector(checkGuessButtonTapped), for: .touchUpInside)
+        checkGuessButton.addTarget(self, action: #selector(checkButtonTapped), for: .touchUpInside)
 
+        viewModel.guessButtonTapped = { [weak self] isCorrect in
+            DispatchQueue.main.async {
+                self?.handleGuessButtonTapped(isCorrect)
+            }
+        }
     }
-    
-    
+
+
     func setupStackView() {
         
         view.addSubview(stackView)
@@ -143,17 +151,20 @@ class FeedViewController: UIViewController {
     }
 
 
-    @objc func checkGuessButtonTapped() {
+    @objc private func checkButtonTapped() {
         if let word = checkTextField.text {
             if word.isEmpty {
                 resultLabel.text = "Не густо"
                 resultLabel.backgroundColor = .systemGray
             } else {
-                let feedModel = FeedModel()
-                let isCorrect = feedModel.check(word: word)
-                resultLabel.text = isCorrect ? "Верно" : "Неверно"
-                resultLabel.backgroundColor = isCorrect ? .green : .red
+                viewModel.check(word: word)
             }
         }
+    }
+
+    
+    private func handleGuessButtonTapped(_ isCorrect: Bool) {
+        resultLabel.text = isCorrect ? "Верно" : "Неверно"
+        resultLabel.backgroundColor = isCorrect ? .green : .red
     }
 }
