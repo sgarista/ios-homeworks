@@ -48,9 +48,10 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     }
 
 
-    func setup(with photo: UIImage) {
+    func setup(with image: CGImage?) {
         
-        photoImageView.image = photo
+        photoImageView.image = image != nil ? UIImage(cgImage: image!) : nil
+
     }
 }
 
