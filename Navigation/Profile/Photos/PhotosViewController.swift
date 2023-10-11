@@ -1,12 +1,7 @@
-
 import UIKit
 import iOSIntPackage
 
 class PhotosViewController: UIViewController {
-
-    var imagePublisherFacade = ImagePublisherFacade()
-
-    var photos = [UIImage]()
 
     var photosCollectionView: UICollectionView = {
         let viewLayout = UICollectionViewFlowLayout()
@@ -17,32 +12,38 @@ class PhotosViewController: UIViewController {
     }()
 
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
-        navigationController?.navigationBar.isHidden = false
-
-        imagePublisherFacade.addImagesWithTimer(time: 0.8, repeat: 40, userImages: photosImages)
-    }
-
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
         addSubviews()
         setupCollectionView()
         setupUI()
-        imagePublisherFacade.subscribe(self)
 
         photosCollectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.id)
+
+
+        let startDate = Date()
+        ImageProcessor().processImagesOnThread(sourceImages: photosImages, filter: .colorInvert, qos: .background) { [weak self] images in
+                 photosImages = images
+                     .compactMap { $0 }
+                     .map { UIImage(cgImage: $0) }
+                 DispatchQueue.main.async {
+                     self?.photosCollectionView.reloadData()
+                 }
+                 print("Process time: \(Date().timeIntervalSince(startDate)) seconds")
+             }
+    }
+
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+        navigationController?.navigationBar.isHidden = false
     }
 
 
     override func viewWillDisappear(_ animated: Bool) {
         navigationController?.navigationBar.isHidden = true
-
-        imagePublisherFacade.removeSubscription(for: self)
-        imagePublisherFacade.rechargeImageLibrary()
     }
 
 
@@ -75,19 +76,23 @@ class PhotosViewController: UIViewController {
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photos.count
+
+        photosImages.count
+        
     }
 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = photosCollectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.id, for: indexPath) as! PhotosCollectionViewCell
-        let photo = photos[indexPath.row]
-        cell.setup(with: photo)
+        let photo = photosImages[indexPath.row]
+        cell.setup(with: photo )
 
         return cell
     }
+
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -98,23 +103,12 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
+
         return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
 
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 8
-    }
-}
-
-
-extension PhotosViewController: ImageLibrarySubscriber {
-
-    func receive(images: [UIImage]) {
-        
-        self.photos = images
-        photosCollectionView.reloadData()
-
     }
 }

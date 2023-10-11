@@ -31,7 +31,7 @@ let photosArray = [
 ]
 
 
-let photosImages = [
+var photosImages = [
     UIImage(named: "1")!,
     UIImage(named: "2")!,
     UIImage(named: "3")!,
