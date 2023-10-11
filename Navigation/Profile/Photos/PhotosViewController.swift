@@ -20,6 +20,18 @@ class PhotosViewController: UIViewController {
         setupUI()
 
         photosCollectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.id)
+
+
+        let startDate = Date()
+        ImageProcessor().processImagesOnThread(sourceImages: photosImages, filter: .colorInvert, qos: .background) { [weak self] images in
+                 photosImages = images
+                     .compactMap { $0 }
+                     .map { UIImage(cgImage: $0) }
+                 DispatchQueue.main.async {
+                     self?.photosCollectionView.reloadData()
+                 }
+                 print("Process time: \(Date().timeIntervalSince(startDate)) seconds")
+             }
     }
 
 
@@ -75,24 +87,8 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = photosCollectionView.dequeueReusableCell(withReuseIdentifier: PhotosCollectionViewCell.id, for: indexPath) as! PhotosCollectionViewCell
-
-        let imageProcessor = ImageProcessor()
-
-        let startTime = CACurrentMediaTime()
-
-        imageProcessor.processImagesOnThread(sourceImages: photosImages, filter: .colorInvert, qos: .background) { (processedImages) in
-
-            let endTime = CACurrentMediaTime()
-            let executionTime = endTime - startTime
-
-            print("Время выполнения: \(Int(executionTime)) секунд")
-
-            DispatchQueue.main.async {
-
-                cell.setup(with: processedImages[indexPath.row])
-            }
-
-        }
+        let photo = photosImages[indexPath.row]
+        cell.setup(with: photo )
 
         return cell
     }
