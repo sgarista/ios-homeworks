@@ -22,15 +22,13 @@ class PhotosViewController: UIViewController {
         photosCollectionView.register(PhotosCollectionViewCell.self, forCellWithReuseIdentifier: PhotosCollectionViewCell.id)
 
 
-        let startDate = Date()
-        ImageProcessor().processImagesOnThread(sourceImages: photosImages, filter: .colorInvert, qos: .background) { [weak self] images in
+        ImageProcessor().processImagesOnThread(sourceImages: photosImages, filter: .chrome, qos: .default) { [weak self] images in
                  photosImages = images
                      .compactMap { $0 }
                      .map { UIImage(cgImage: $0) }
                  DispatchQueue.main.async {
                      self?.photosCollectionView.reloadData()
                  }
-                 print("Process time: \(Date().timeIntervalSince(startDate)) seconds")
              }
     }
 
