@@ -11,6 +11,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: scene)
 
 
+        let appConfiguration: AppConfiguration = AppConfiguration.allCases.randomElement() ?? .people
+        NetworkService.request(for: appConfiguration)
 
         let factory = MyLoginFactory()
         let loginInspector = factory.makeLoginInspector()
@@ -54,6 +56,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window.rootViewController = rootViewController
         window.makeKeyAndVisible()
+
+      
 
         self.window = window
     }
