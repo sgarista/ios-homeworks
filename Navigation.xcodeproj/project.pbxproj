@@ -32,6 +32,7 @@
 		3A52CF2F2A7FF19E00D11A91 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF2E2A7FF19E00D11A91 /* CurrentUserService.swift */; };
 		3A52CF3A2A801DBE00D11A91 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF332A80118100D11A91 /* UserDataSource.swift */; };
 		3A52CF3C2A802A0F00D11A91 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF3B2A802A0F00D11A91 /* TestUserService.swift */; };
+		3A98B3192AE7A3A6004C7269 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98B3182AE7A3A6004C7269 /* Task.swift */; };
 		3A9FBCEC2A3CC257002EEA34 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */; };
 		3AC7B7872A8E6415000D03F9 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B7862A8E6415000D03F9 /* Checker.swift */; };
 		3AC7B7892A8E69E7000D03F9 /* LoginViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B7882A8E69E7000D03F9 /* LoginViewControllerDelegate.swift */; };
@@ -95,6 +96,7 @@
 		3A52CF2E2A7FF19E00D11A91 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		3A52CF332A80118100D11A91 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		3A52CF3B2A802A0F00D11A91 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
+		3A98B3182AE7A3A6004C7269 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3AA60E982A40C57B00560494 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		3AC7B7862A8E6415000D03F9 /* Checker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checker.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 		3A3C5AE52A2CA0140072E910 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				3A98B3172AE7A39B004C7269 /* Model */,
 				3A3C5AF42A2CA0170072E910 /* Info.plist */,
 				3AE7D3842AD712840016B0F5 /* Network */,
 				3AE7D3802AD711E70016B0F5 /* Application */,
@@ -215,6 +218,14 @@
 				3ACDA66B2A4331EE00DFFA3E /* PostTableViewCell.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		3A98B3172AE7A39B004C7269 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3A98B3182AE7A3A6004C7269 /* Task.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		3AE7D3802AD711E70016B0F5 /* Application */ = {
@@ -408,6 +419,7 @@
 				3A28AD812A42454B00F83ED4 /* UITableView+Extensions.swift in Sources */,
 				3A477C0A2AC735A800A2DA20 /* FeedViewModel.swift in Sources */,
 				3A52CF3A2A801DBE00D11A91 /* UserDataSource.swift in Sources */,
+				3A98B3192AE7A3A6004C7269 /* Task.swift in Sources */,
 				3A52CF2F2A7FF19E00D11A91 /* CurrentUserService.swift in Sources */,
 				3AC7B78D2A921A2A000D03F9 /* LoginFactory.swift in Sources */,
 				3A0A03CD2A4604450036C484 /* PhotosViewController.swift in Sources */,
