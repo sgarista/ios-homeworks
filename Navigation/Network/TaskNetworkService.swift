@@ -1,17 +1,6 @@
 import UIKit
 
 
-enum NetworkError: Int, Error {
-    case badRequest = 400
-    case unauthorized = 401
-    case notFound = 404
-    case decodeError = 1000
-    case serverError = 500
-    case unowned = 2000
-
-}
-
-
 enum AppConfiguration: String, CaseIterable {
     case first = "https://jsonplaceholder.typicode.com/todos/1"
     case second = "https://jsonplaceholder.typicode.com/todos/2"
@@ -41,8 +30,7 @@ struct NetworkService {
                     if json is [String: Any] {
                         let task = try JSONDecoder().decode(Task.self, from: data)
                         DispatchQueue.main.async {
-                            InfoViewController.jsonLabel.text = task.title
-                            print(InfoViewController.jsonLabel.text ?? "пустота")
+                            InfoViewController.taskLabel.text = "Задание 1:\n\(task.title)"
                         }
                     }
                 } catch {

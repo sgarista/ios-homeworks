@@ -32,6 +32,9 @@
 		3A52CF2F2A7FF19E00D11A91 /* CurrentUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF2E2A7FF19E00D11A91 /* CurrentUserService.swift */; };
 		3A52CF3A2A801DBE00D11A91 /* UserDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF332A80118100D11A91 /* UserDataSource.swift */; };
 		3A52CF3C2A802A0F00D11A91 /* TestUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A52CF3B2A802A0F00D11A91 /* TestUserService.swift */; };
+		3A8B6A982AEBA50B00C8E87C /* Planet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B6A972AEBA50B00C8E87C /* Planet.swift */; };
+		3A8B6A9A2AEBA7FF00C8E87C /* PlanetNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B6A992AEBA7FF00C8E87C /* PlanetNetworkService.swift */; };
+		3A8B6A9C2AEBA82000C8E87C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B6A9B2AEBA82000C8E87C /* NetworkError.swift */; };
 		3A98B3192AE7A3A6004C7269 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A98B3182AE7A3A6004C7269 /* Task.swift */; };
 		3A9FBCEC2A3CC257002EEA34 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */; };
 		3AC7B7872A8E6415000D03F9 /* Checker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B7862A8E6415000D03F9 /* Checker.swift */; };
@@ -40,7 +43,7 @@
 		3AC7B78D2A921A2A000D03F9 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B78C2A921A2A000D03F9 /* LoginFactory.swift */; };
 		3AC7B78F2A921A6B000D03F9 /* MyLoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC7B78E2A921A6B000D03F9 /* MyLoginFactory.swift */; };
 		3ACDA66C2A4331EE00DFFA3E /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACDA66B2A4331EE00DFFA3E /* PostTableViewCell.swift */; };
-		3AE7D3862AD712960016B0F5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7D3852AD712960016B0F5 /* NetworkService.swift */; };
+		3AE7D3862AD712960016B0F5 /* TaskNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE7D3852AD712960016B0F5 /* TaskNetworkService.swift */; };
 		3AEA31F82AACD0B900FF8F5A /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 3AEA31F72AACD0B900FF8F5A /* iOSIntPackage */; };
 		3AF064112ABC86340018E400 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF064102ABC86340018E400 /* CustomButton.swift */; };
 		3AF064132ABE08C30018E400 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF064122ABE08C20018E400 /* FeedModel.swift */; };
@@ -96,6 +99,9 @@
 		3A52CF2E2A7FF19E00D11A91 /* CurrentUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUserService.swift; sourceTree = "<group>"; };
 		3A52CF332A80118100D11A91 /* UserDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataSource.swift; sourceTree = "<group>"; };
 		3A52CF3B2A802A0F00D11A91 /* TestUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUserService.swift; sourceTree = "<group>"; };
+		3A8B6A972AEBA50B00C8E87C /* Planet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planet.swift; sourceTree = "<group>"; };
+		3A8B6A992AEBA7FF00C8E87C /* PlanetNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetNetworkService.swift; sourceTree = "<group>"; };
+		3A8B6A9B2AEBA82000C8E87C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		3A98B3182AE7A3A6004C7269 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		3A9FBCEB2A3CC257002EEA34 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		3AA60E982A40C57B00560494 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -105,7 +111,7 @@
 		3AC7B78C2A921A2A000D03F9 /* LoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactory.swift; sourceTree = "<group>"; };
 		3AC7B78E2A921A6B000D03F9 /* MyLoginFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLoginFactory.swift; sourceTree = "<group>"; };
 		3ACDA66B2A4331EE00DFFA3E /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
-		3AE7D3852AD712960016B0F5 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		3AE7D3852AD712960016B0F5 /* TaskNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskNetworkService.swift; sourceTree = "<group>"; };
 		3AF064102ABC86340018E400 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		3AF064122ABE08C20018E400 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -224,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				3A98B3182AE7A3A6004C7269 /* Task.swift */,
+				3A8B6A972AEBA50B00C8E87C /* Planet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,7 +279,9 @@
 		3AE7D3842AD712840016B0F5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				3AE7D3852AD712960016B0F5 /* NetworkService.swift */,
+				3AE7D3852AD712960016B0F5 /* TaskNetworkService.swift */,
+				3A8B6A992AEBA7FF00C8E87C /* PlanetNetworkService.swift */,
+				3A8B6A9B2AEBA82000C8E87C /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -412,6 +421,7 @@
 				3A52CF2B2A7FEC7F00D11A91 /* User.swift in Sources */,
 				3A23AC632A2DE830006F7F28 /* InfoViewController.swift in Sources */,
 				3A52CF2D2A7FED2800D11A91 /* UserService.swift in Sources */,
+				3A8B6A9C2AEBA82000C8E87C /* NetworkError.swift in Sources */,
 				3A3C5AFD2A2CD19F0072E910 /* ProfileViewController.swift in Sources */,
 				3A52CF3C2A802A0F00D11A91 /* TestUserService.swift in Sources */,
 				3AC7B7892A8E69E7000D03F9 /* LoginViewControllerDelegate.swift in Sources */,
@@ -423,6 +433,7 @@
 				3A52CF2F2A7FF19E00D11A91 /* CurrentUserService.swift in Sources */,
 				3AC7B78D2A921A2A000D03F9 /* LoginFactory.swift in Sources */,
 				3A0A03CD2A4604450036C484 /* PhotosViewController.swift in Sources */,
+				3A8B6A9A2AEBA7FF00C8E87C /* PlanetNetworkService.swift in Sources */,
 				3A1361A02A77FDF7009CE724 /* PostViewController.swift in Sources */,
 				3A3C5AE92A2CA0140072E910 /* SceneDelegate.swift in Sources */,
 				3A4C20D62A457FD60053DEC1 /* PhotosTableViewCell.swift in Sources */,
@@ -430,9 +441,10 @@
 				3A0856722A34ED0C0022E5D8 /* ProfileHeaderView.swift in Sources */,
 				3A0A03D12A460FFB0036C484 /* PhotosCollectionViewCell.swift in Sources */,
 				3AC7B78F2A921A6B000D03F9 /* MyLoginFactory.swift in Sources */,
-				3AE7D3862AD712960016B0F5 /* NetworkService.swift in Sources */,
+				3AE7D3862AD712960016B0F5 /* TaskNetworkService.swift in Sources */,
 				3AC7B7872A8E6415000D03F9 /* Checker.swift in Sources */,
 				3ACDA66C2A4331EE00DFFA3E /* PostTableViewCell.swift in Sources */,
+				3A8B6A982AEBA50B00C8E87C /* Planet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

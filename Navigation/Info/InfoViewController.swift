@@ -1,13 +1,14 @@
 import UIKit
 
+
 class InfoViewController: UIViewController {
     
-    static var jsonLabel: UILabel = {
+    static var taskLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.backgroundColor = .white
         label.textColor = .black
-        label.text = "testestetstsetste"
+        label.text = "Задание 1"
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         label.layer.borderWidth = 3
@@ -15,6 +16,23 @@ class InfoViewController: UIViewController {
         label.layer.cornerRadius = 10
         label.numberOfLines = 0
         
+        return label
+    }()
+
+
+    static var planetLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.backgroundColor = .white
+        label.textColor = .black
+        label.text = "Задание 2"
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        label.layer.borderWidth = 3
+        label.layer.borderColor = UIColor.green.cgColor
+        label.layer.cornerRadius = 10
+        label.numberOfLines = 0
+
         return label
     }()
     
@@ -29,8 +47,16 @@ class InfoViewController: UIViewController {
         
         return button
     }()
-    
-    
+
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        setupTaskLabel()
+        setupPlanetLabel()
+    }
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,11 +67,11 @@ class InfoViewController: UIViewController {
         
         view.backgroundColor = .white
         
-        view.addSubview(InfoViewController.jsonLabel)
+        view.addSubview(InfoViewController.taskLabel)
+        view.addSubview(InfoViewController.planetLabel)
         
         setupConstraints()
-        
-        
+
     }
     
     
@@ -56,10 +82,15 @@ class InfoViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             
-            InfoViewController.jsonLabel.leadingAnchor.constraint(equalTo: safeAreaLG.leadingAnchor, constant: 10),
-            InfoViewController.jsonLabel.trailingAnchor.constraint(equalTo: safeAreaLG.trailingAnchor, constant: -10),
-            InfoViewController.jsonLabel.centerYAnchor.constraint(equalTo: safeAreaLG.centerYAnchor),
-            InfoViewController.jsonLabel.heightAnchor.constraint(equalToConstant: 60)
+            InfoViewController.taskLabel.leadingAnchor.constraint(equalTo: safeAreaLG.leadingAnchor, constant: 10),
+            InfoViewController.taskLabel.trailingAnchor.constraint(equalTo: safeAreaLG.trailingAnchor, constant: -10),
+            InfoViewController.taskLabel.centerYAnchor.constraint(equalTo: safeAreaLG.centerYAnchor),
+
+            InfoViewController.planetLabel.topAnchor.constraint(equalTo: InfoViewController.taskLabel.bottomAnchor, constant: 40),
+            InfoViewController.planetLabel.leadingAnchor.constraint(equalTo: InfoViewController.taskLabel.leadingAnchor),
+            InfoViewController.planetLabel.trailingAnchor.constraint(equalTo: InfoViewController.taskLabel.trailingAnchor)
+
+
             
             
         ])
@@ -69,6 +100,22 @@ class InfoViewController: UIViewController {
     func setupAlertButton() {
         
         view.addSubview(alertButton)
+    }
+
+
+    func setupPlanetLabel() {
+
+        let planetConfiguration: PlanetConfiguration = PlanetConfiguration.planet
+        PlanetNetworkService.request(for: planetConfiguration)
+
+    }
+
+
+    func setupTaskLabel() {
+
+        let appConfiguration: AppConfiguration = AppConfiguration.allCases.randomElement() ?? .first
+        NetworkService.request(for: appConfiguration)
+
     }
     
     
